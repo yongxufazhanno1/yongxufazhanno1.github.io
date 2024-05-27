@@ -1,0 +1,10 @@
+.mb-6{
+    margin-bottom: 6em;
+}
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+.link:hover{
+    color: #343661;
+}
