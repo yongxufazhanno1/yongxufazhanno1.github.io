@@ -8,3 +8,7 @@
 .link:hover{
     color: #343661;
 }
+.bgimg{
+    max-width: 100%;
+    height: auto;
+}
