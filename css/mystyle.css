@@ -12,3 +12,63 @@
     max-width: 100%;
     height: auto;
 }
+.process-section {
+    background-color: #F7F7F7; /* 背景颜色 */
+    padding: 50px 0;
+  }
+  .process-step {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .process-step img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  .process-arrow {
+    text-align: center;
+    font-size: 24px;
+    color: #f17945;
+  }
+  .arrow-horizontal {
+    display: none;
+  }
+  .arrow-vertical {
+    display: block;
+  }
+  @media (min-width: 992px) {
+    .arrow-horizontal {
+      display: block;
+    }
+    .arrow-vertical {
+      display: none;
+    }
+  }
+  .advantages-disadvantages {
+    background-color: #F7F7F7; /* 背景颜色 */
+    padding: 50px 0;
+  }
+  .advantages-disadvantages h4 {
+    color: #f17945; /* 标题颜色 */
+  }
+  .advantages-disadvantages ul {
+    list-style: none;
+    padding: 0;
+  }
+  .advantages-disadvantages ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .advantages-disadvantages ul li::before {
+    content: '★';
+    color: #f17945; /* 图标颜色 */
+    position: absolute;
+    left: 0;
+  }
+  .disadvantages ul li::before {
+    content: '✘';
+    color: #f17945; /* 图标颜色 */
+    position: absolute;
+    left: 0;
+  }
