@@ -223,3 +223,51 @@ body {
 .text-indent {
      text-indent: 2em;
 }
+
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.chart {
+    margin-bottom: 40px;
+}
+
+.chart h2 {
+    margin-bottom: 10px;
+}
+
+.bars {
+    display: flex;
+    flex-direction: column;
+}
+
+.bar {
+    position: relative;
+    margin: 5px 0;
+    border-radius: 4px;
+    height: 40px; /* Increased height for longer bars */
+    transition: background-color 0.3s, width 1s; /* Smooth transition for dynamic effect */
+    width: 0; /* Start with width 0 for dynamic effect */
+    background-color: #fae099; /* Default color */
+}
+
+.bar[data-max="true"] {
+    background-color: #f89b9b; /* Highlight color for max value (lighter) */
+}
+
+.bar[data-min="true"] {
+    background-color: #c3ffb3; /* Highlight color for min value (lighter) */
+}
+
+.bar::after {
+    content: attr(data-country) ": " attr(data-value) " 台幣元/度";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #212529; /* Specified font color */
+    font-size: 14px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: visible; /* Allow text to extend beyond the bar */
+}
