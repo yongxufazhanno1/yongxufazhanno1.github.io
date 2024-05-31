@@ -1,75 +1,6 @@
 $('.carousel').carousel({
     interval: 3000 // Change to the desired interval (in milliseconds)
   });
-  
-  document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('energyChart').getContext('2d');
-    const data = {
-        labels: ['燃煤', '燃氣', '再生能源', '核能', '燃油', '抽蓄水力'],
-        datasets: [
-            {
-                label: '2022年發電量占比 (%)',
-                data: [42.07, 38.81, 8.27, 8.24, 1.54, 1.06],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '2023年發電量占比 (%)',
-                data: [42.24, 39.57, 9.47, 6.31, 1.34, 1.08],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(153, 102, 255, 0.7)',
-                    'rgba(255, 159, 64, 0.7)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }
-        ]
-    };
-
-    const options = {
-        responsive: true,
-        cutout: '50%',
-        plugins: {
-            legend: {
-                display: true, // 隐藏图例
-                onClick: () => {} // 禁用点击图例更新图表功能
-            }
-        }
-    };
-
-    const energyChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    });
-});
-
 
 // script.js
 
@@ -151,4 +82,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(residentialChart);
     observer.observe(industrialChart);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const energyData = [
+        { year: 2013, coal: 30.84, oil: 46.97, gas: 11.94, nuclear: 8.44, renewable: 1.81 },
+        { year: 2014, coal: 29.86, oil: 47.88, gas: 12.25, nuclear: 8.34, renewable: 1.66 },
+        { year: 2015, coal: 29.95, oil: 47.72, gas: 13.31, nuclear: 7.29, renewable: 1.73 },
+        { year: 2016, coal: 29.64, oil: 48.42, gas: 13.79, nuclear: 6.31, renewable: 1.84 },
+        { year: 2017, coal: 30.47, oil: 47.99, gas: 15.29, nuclear: 4.48, renewable: 1.78 },
+        { year: 2018, coal: 29.73, oil: 47.67, gas: 15.36, nuclear: 5.45, renewable: 1.80 },
+        { year: 2019, coal: 30.20, oil: 46.31, gas: 15.15, nuclear: 6.38, renewable: 1.97 },
+        { year: 2020, coal: 30.41, oil: 43.46, gas: 17.38, nuclear: 6.65, renewable: 2.10 },
+        { year: 2021, coal: 31.11, oil: 42.81, gas: 18.28, nuclear: 5.64, renewable: 2.16 },
+        { year: 2022, coal: 29.68, oil: 43.70, gas: 19.12, nuclear: 4.90, renewable: 2.60 }
+    ];
+
+    const energyChart = document.getElementById('energyChart');
+
+    energyData.forEach(item => {
+        const barContainer = document.createElement('div');
+        barContainer.classList.add('energy-bar-container');
+
+        const totalHeight = item.coal + item.oil + item.gas + item.nuclear + item.renewable;
+
+        const createBarSegment = (height, className) => {
+            const segment = document.createElement('div');
+            segment.classList.add('energy-bar', className);
+            segment.style.height = `${(height / totalHeight) * 100}%`;
+            return segment;
+        };
+
+        barContainer.appendChild(createBarSegment(item.coal, 'energy-coal'));
+        barContainer.appendChild(createBarSegment(item.oil, 'energy-oil'));
+        barContainer.appendChild(createBarSegment(item.gas, 'energy-gas'));
+        barContainer.appendChild(createBarSegment(item.nuclear, 'energy-nuclear'));
+        barContainer.appendChild(createBarSegment(item.renewable, 'energy-renewable'));
+
+        const label = document.createElement('div');
+        label.classList.add('energy-label');
+        label.textContent = item.year;
+        barContainer.appendChild(label);
+
+        energyChart.appendChild(barContainer);
+    });
+
+    const energyBars = document.querySelectorAll('.energy-bar-container');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY + window.innerHeight >= energyChart.offsetTop) {
+            energyBars.forEach(bar => {
+                const heights = Array.from(bar.children)
+                    .filter(child => child.classList.contains('energy-bar'))
+                    .map(child => child.style.height);
+
+                let cumulativeHeight = 0;
+                heights.forEach((height, index) => {
+                    const currentBar = bar.children[index];
+                    cumulativeHeight += parseFloat(height);
+                    currentBar.style.height = `${cumulativeHeight}%`;
+                });
+            });
+        }
+    });
 });
