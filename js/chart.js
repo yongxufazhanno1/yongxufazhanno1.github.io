@@ -1,10 +1,5 @@
-$('.carousel').carousel({
-    interval: 3000 // Change to the desired interval (in milliseconds)
-  });
 
-// script.js
-
-document.addEventListener('DOMContentLoaded', function () {
+		document.addEventListener('DOMContentLoaded', function () {
     const residentialData = [
         { country: "馬來西亞", value: 1.4888 },
         { country: "中國", value: 2.4238 },
@@ -78,3 +73,4 @@ function animateBars(entries, observer) {
         }
     });
 }
+
