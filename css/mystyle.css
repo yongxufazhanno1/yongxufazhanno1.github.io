@@ -297,3 +297,11 @@ h1 {
     height: 150px; /* Set a fixed height for the card body */
     overflow-y: auto; /* Enable vertical scrolling if the content exceeds the height */
 }
+
+.link-source{
+  text-decoration: none;
+  color: inherit;
+}
+.link-source:hover{
+  text-decoration: underline;
+}
