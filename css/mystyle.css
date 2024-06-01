@@ -305,3 +305,13 @@ h1 {
 .link-source:hover{
   text-decoration: underline;
 }
+
+p{
+  font-size: 16px !important;
+}
+
+.big{
+  font-size: 20px;
+  color: #5a9167;
+  font-weight:bold;
+}
