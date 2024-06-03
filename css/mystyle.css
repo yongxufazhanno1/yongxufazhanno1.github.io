@@ -358,3 +358,10 @@ p{
     margin-top: 3rem;
   }
 }
+.connector-line {
+  width: 10px;          
+  height: 3px; 
+  background-color: #f17945;    
+  margin: 0 10px;    
+  border-radius: 3px;
+}
