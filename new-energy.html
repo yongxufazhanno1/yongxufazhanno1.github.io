@@ -90,7 +90,10 @@
 	<div class="hero overlay">
 
 		<div class="img-bg rellax">
-			<img src="images/bg-newenergy.webp" alt="newenergyImage" class="img-fluid">
+			<picture>
+				<source srcset="images/bg-newenergy.webp" type="image/webp">
+				<img data-src="images/bg-newenergy.jpg" alt="newenergyImage" class="img-fluid lazyload">
+			</picture>			  
 		</div>
 
 		<div class="container">
@@ -529,5 +532,7 @@
 		<script src="js/glightbox.min.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/myjs.js"></script>
+		<script src="js/lazy.js"></script>
+
 	</body>
 	</html>

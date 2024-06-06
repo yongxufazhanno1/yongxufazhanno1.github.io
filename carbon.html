@@ -91,7 +91,10 @@
 	<div class="hero overlay">
 
 		<div class="img-bg rellax">
-			<img src="images/bg-carbon.webp" alt="carbonImage" class="img-fluid pt-2">
+			<picture>
+				<source srcset="images/bg-carbon.webp" type="image/webp">
+				<img data-src="images/bg-carbon.jpg" alt="carbonImage" class="img-fluid lazyload pt-2">
+			</picture>
 		</div>
 
 		<div class="container">
@@ -557,5 +560,7 @@
 		<script src="js/glightbox.min.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+		<script src="js/lazy.js"></script>
+
 	</body>
 	</html>

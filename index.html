@@ -24,7 +24,6 @@
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 	
-	<link rel="preload" as="image" href="banner.webp">
 	<link rel="preload" as="image" href="bg-light.webp">
 	<link rel="preload" as="image" href="bg-newenergy.webp">
 
@@ -89,7 +88,10 @@
 	<div class="hero overlay">
 
 		<div class="img-bg rellax">
-			<img src="images/banner.webp" alt="title background" class="img-fluid">
+			<picture>
+				<source srcset="images/banner.webp" type="image/webp">
+				<img data-src="images/banner.jpg" alt="title background" class="img-fluid lazyload">
+			  </picture>
 		</div>
 
 		<div class="container">
@@ -573,5 +575,6 @@
 		<script src="js/flatpickr.js"></script>
 		<script src="js/glightbox.min.js"></script>
 		<script src="js/custom.js"></script>
+		<script src="js/lazy.js"></script>
 	</body>
 	</html>
